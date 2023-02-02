@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
 
 const cartSlice = createSlice({  // createSlice amader jnno reducers toiri kore action o toiri kore
 
     name: 'cart',
 
-    //ata parameter seta up a set ase
-    initialState,
+    initialState: [],
 
     //ata diye amader state change kora jabe
     // reducers holo pure function, pure function holo, jeta reducer a thakbe seta chara bairer kono jinis change korbe na
