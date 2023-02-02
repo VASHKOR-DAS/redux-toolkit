@@ -15,10 +15,12 @@ const cartSlice = createSlice({  // createSlice amader jnno reducers toiri kore 
         add(state, action) {    //state bolbe initialState er array k bojhay
             state.push(action.payload);     // initialState er array te kono action hole seta push krbo
 
+            // state.push(action.payload); amra direct aivabe dom a data normal redux a push korte parbona, akhane parteci karon amra createSlice hook er vitor aci
+
         },
 
         remove(state, action) {
-            state.filter(item => item.id !== action.payload); // jei id te click kora hobe, seta state array theke remove hye jabe
+            return state.filter(item => item.id !== action.payload); // jei id te click kora hobe, seta state array theke remove hye jabe
         },
     },
 
