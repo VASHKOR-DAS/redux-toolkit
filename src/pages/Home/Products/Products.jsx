@@ -50,6 +50,9 @@ const Products = () => {
 
 
     const handleAdd = (product) => {
+
+        // console.log(product); // click korle thik moto product pai kina seta janar jnno
+
         dispatch(add(product));  // dispatch(add(ata payload, mane click korle jeta store a pathabo));
     }
 
@@ -66,6 +69,13 @@ const Products = () => {
                     <h4>{product.price}</h4>
 
                     <button className='btn' onClick={() => handleAdd(product)}>Add to cart</button>
+
+                    {/* handleAdd(product), ai parameter ta holo map er vitore jei 1ta kore product paici  
+                    
+                    handleAdd(product.price) sudhu price gulo pete chaile
+
+                    cartSlice a jei action parameter ase. sei action amra ai onClick diye korechi
+                    */}
 
 
                 </div>
