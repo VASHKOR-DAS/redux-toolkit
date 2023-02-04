@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const STATUSES = Object.freeze({    // Object.freeze er moddhe loading state er value ta dewa mane, ata kei change korte parbe na, readOnly, ata api call a use korte parbo, jekhane jekhane data fetch hobe
+export const STATUSES = Object.freeze({    // Object.freeze er moddhe loading state er value ta dewa mane, ata kei change korte parbe na, readOnly, ata api call a use korte parbo, jekhane jekhane data fetch hobe
 
     IDLE: 'idle',
     ERROR: 'error',

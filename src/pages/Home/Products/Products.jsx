@@ -1,12 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../store/cartSlice';
-import { fetchProducts } from '../../../store/productSlice';
+import { fetchProducts, STATUSES } from '../../../store/productSlice';
 
 const Products = () => {
     const dispatch = useDispatch(); // handleAdd er jonno
 
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
+
+    /**
+     *state => state.product ai product ta holo productSlice,
+    
+     *productSlice er initialState holo
+     initialState: {
+        data: [],
+        status: STATUSES.IDLE
+     }
+     tar mane akhan theke 2ta property(data, status) dewa ase
+
+     ai 2tai akhane call korte hbe
+
+     jehetu amader niche data gulo k akhane map kora products name a,
+     tai akhane data k rename kora hoise : diye 
+
+     */
+    const { data: products, status } = useSelector(state => state.product);
 
     useEffect(() => {
         // productSlice a api call korchi seta akhane call korbo
@@ -29,7 +47,7 @@ const Products = () => {
          */
 
 
-    }, []);
+    }, [dispatch]); // empty array dile tar dependency error dey, tai akhane dependency hisebe [dispatch] dewa ase
 
 
 
@@ -63,6 +81,18 @@ const Products = () => {
         // console.log(product); // click korle thik moto product pai kina seta janar jnno
 
         dispatch(add(product));  // dispatch(add(ata payload, mane click korle jeta store a pathabo));
+    }
+
+
+
+
+    // STATUS gulo show korabo
+    if (status === STATUSES.LOADING) {  //STATUSES ata import kore newa
+        return <h2>Loading...</h2>
+    }
+
+    if (status === STATUSES.ERROR) {
+        return <h2>Something went wrong!</h2>;
     }
 
     return <div className='productsWrapper'>
