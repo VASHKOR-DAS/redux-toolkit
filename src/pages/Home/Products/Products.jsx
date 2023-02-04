@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { add } from '../../../store/cartSlice';
+import { fetchProducts } from '../../../store/productSlice';
 
 const Products = () => {
     const dispatch = useDispatch(); // handleAdd er jonno
@@ -8,7 +9,12 @@ const Products = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        // productSlice a api call korchi seta akhane call korbo
+        dispatch(fetchProducts());
+
+        // ai fetch ta amra productSlice a korechi
+        /**
+         const fetchProducts = async () => {
 
             const res = await fetch('https://fakestoreapi.com/products');
 
@@ -20,6 +26,9 @@ const Products = () => {
         }
 
         fetchProducts();
+         */
+
+
     }, []);
 
 
